@@ -1,3 +1,14 @@
 <template>
-  <div class="text-3xl font-bold underline">首页</div>
+  <TopBanner></TopBanner>
 </template>
+<script setup>
+import TopBanner from './components/TopBanner.vue';
+
+</script>
+
+
+<style lang="less">
+a {
+  display: block;
+}
+</style>

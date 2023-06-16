@@ -1,8 +1,14 @@
 <template>
-  <div class="mt-4">
+  <div class="mt-4 flex justify-center flex-col">
     <div v-for="item in list.concat(list)">
       <CommonCard v-if="item.type === 1" :item="item"></CommonCard>
       <TextCard v-if="item.type === 2" :item="item"></TextCard>
+    </div>
+    <div class="join mx-auto">
+      <button class="join-item btn">1</button>
+      <button class="join-item btn btn-active">2</button>
+      <button class="join-item btn">3</button>
+      <button class="join-item btn">4</button>
     </div>
   </div>
 </template>

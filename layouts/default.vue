@@ -14,3 +14,6 @@ import Header from '../components/Header'
   margin: 0 auto;
 }
 </style>
+<style lang="less">
+@import url("~/asset/css/common.less");
+</style>

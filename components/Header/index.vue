@@ -30,7 +30,8 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import { debounce } from '../../utils'
 
 const navList = ref([
   {
@@ -69,6 +70,20 @@ const navList = ref([
   },
 ])
 
+onMounted(() => {
+  listenScroll()
+})
+
+const listenScroll = () => {
+  window.addEventListener('scroll',debounce(() => {
+    if(scrollY > 90) {
+      document.querySelector('.site-header').style.position = 'sticky'
+    } else {
+      document.querySelector('.site-header').style.position = 'static'
+    }
+  },20))
+}
+
 </script>
 
 <style lang="less" scoped>
@@ -76,9 +91,10 @@ const navList = ref([
   max-width: 1100px;
   padding: 30px 30px;
   margin: 0 auto;
-  position: sticky;
+  // position: sticky;
   top: 0;
   z-index: 9999;
+  transition: .3s ease;
   .content {
     padding: 10px;
     border-radius: 100px;

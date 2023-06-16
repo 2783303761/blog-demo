@@ -1,5 +1,5 @@
 <template>
-  <!-- <Header></Header> -->
+  <Header></Header>
   <div class="main-container">
     <slot></slot>
   </div>

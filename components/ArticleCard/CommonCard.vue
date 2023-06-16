@@ -34,10 +34,17 @@ const props = defineProps({
   border-radius: 8px;
   .left-content {
     margin-right: 16px;
+    height: 147px;
+    width: 147px;
+    border-radius: 8px;
+    overflow: hidden;
     img {
-      height: 147px;
-      width: 147px;
-      border-radius: 8px;
+      height: 100%;
+      width: 100%;
+      transition: all .444s ease-in-out;
+      &:hover {
+        transform: scale(1.1);
+      }
     }
   }
   .right-content {

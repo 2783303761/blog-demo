@@ -22,8 +22,7 @@
         </a>
       </div>
       <div class="search flex items-center justify-center">
-        <img class="not-hover-img" src="asset/images/search.svg" />
-        <img class="hover-img" src="asset/images/search-white.svg" />
+        <i class="iconfont icon-search"></i>
       </div>
     </div>
   </div>
@@ -163,20 +162,16 @@ const listenScroll = () => {
       width: 34px;
       margin: auto 4px auto 0;
       cursor: pointer;
-      img {
-        height: 16px;
-        width: 16px;
+      i {
+        font-size: 16px;
       }
       .hover-img {
         display: none;
       }
       &:hover {
         background: #636874;
-        .hover-img {
-          display: block;
-        }
-        .not-hover-img {
-          display: none;
+        i {
+          color: white;
         }
       }
     }

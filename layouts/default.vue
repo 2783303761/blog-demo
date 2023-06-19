@@ -19,4 +19,5 @@ import Footer from '../components/Footer'
 </style>
 <style lang="less">
 @import url("~/asset/css/common.less");
+@import url("~/asset/css/iconfont/iconfont.css");
 </style>

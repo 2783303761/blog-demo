@@ -4,7 +4,7 @@
       <img :src="item.coverImg" />
     </div>
     <div class="right-content flex-1 flex flex-col justify-between">
-      <div>
+      <div class="grid">
         <div class="text-lg font-bold line">{{ item.title }}</div>
         <div class="article-desc text-sm mt-4 line-2">{{ item.desc }}</div>
       </div>
@@ -38,6 +38,7 @@ const props = defineProps({
     width: 147px;
     border-radius: 8px;
     overflow: hidden;
+    flex-shrink: 0;
     img {
       height: 100%;
       width: 100%;

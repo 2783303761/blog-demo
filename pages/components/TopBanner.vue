@@ -45,6 +45,7 @@ const bannerList = ref([
     position: absolute;
     color: white;
     width: 100%;
+    padding: 0 16px;
     font-size: 20px;
     font-weight: 600;
     bottom: 24px;

@@ -21,8 +21,13 @@
           </div>
         </a>
       </div>
-      <div class="search flex items-center justify-center">
-        <i class="iconfont icon-search"></i>
+      <div class="flex flex-row flex-row-reverse flex-1">
+        <div class="right-icon flex items-center justify-center">
+          <i class="iconfont icon-search"></i>
+        </div>
+        <div class="m right-icon flex items-center justify-center">
+          <i class="iconfont icon-list"></i>
+        </div>
       </div>
     </div>
   </div>
@@ -88,7 +93,7 @@ const listenScroll = () => {
 <style lang="less" scoped>
 .site-header {
   max-width: 1100px;
-  padding: 30px 30px;
+  padding: 30px;
   margin: 0 auto;
   // position: sticky;
   top: 0;
@@ -155,7 +160,7 @@ const listenScroll = () => {
         background: linear-gradient(to top,#e9ecf1,#f3f4f6);
       }
     }
-    .search {
+    .right-icon {
       background: #f3f4f6;
       border-radius: 20px;
       height: 34px;
@@ -175,7 +180,20 @@ const listenScroll = () => {
         }
       }
     }
+    .m {
+      display: none;
+    }
+    @media (max-width: 1000px) {
+      .nav {
+        display: none;
+      }
+      .m {
+        display: flex;
+      }
+    }
   }
-  
+  @media (max-width: 750px) {
+    padding: 16px;
+  }
 }
 </style>

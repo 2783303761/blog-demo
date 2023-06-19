@@ -5,7 +5,7 @@
     </div>
     <div class="right-content flex-1 flex flex-col justify-between">
       <div class="grid">
-        <div class="text-lg font-bold line">{{ item.title }}</div>
+        <div class="article-title text-lg font-bold line">{{ item.title }}</div>
         <div class="article-desc text-sm mt-4 line-2">{{ item.desc }}</div>
       </div>
       <div class="card-footer flex text-xs mt-3">
@@ -58,6 +58,21 @@ const props = defineProps({
     }
     i {
       color: #fd6e6e;
+    }
+  }
+  @media (max-width: 750px) {
+    .left-content {
+      height: 110px;
+      width: 110px;
+    }
+    .right-content {
+      .article-title {
+        font-size: 14px;
+      }
+      .article-desc {
+        font-size: 13px;
+        margin-top: 8px;
+      }
     }
   }
 }

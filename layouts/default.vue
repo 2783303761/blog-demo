@@ -15,6 +15,9 @@ import Footer from '../components/Footer'
   max-width: 1040px;
   margin: 0 auto;
   padding: 0 50px 50px 50px;
+  @media (max-width: 750px) {
+    padding: 0 16px 16px 16px;
+  }
 }
 </style>
 <style lang="less">

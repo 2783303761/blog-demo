@@ -22,21 +22,45 @@
       </div>
       <div class="flex flex-row flex-row-reverse flex-1">
         <div class="right-icon flex items-center justify-center">
-          <i class="iconfont icon-search"></i>
+          <div class="drawer drawer-end rounded-full">
+            <input id="my-drawer-search" type="checkbox" class="drawer-toggle" />
+            <div class="drawer-content rounded-full flex">
+              <!-- Page content here -->
+              <label for="my-drawer-search" @click="showListIcon=false;" class="drawer-button m-auto">
+                <i class="iconfont icon-search"></i>
+              </label>
+            </div> 
+            <div class="drawer-side z-50">
+              <label for="my-drawer-search" class="drawer-overlay"></label>
+              <div class="menu p-4 w-96 h-full bg-white text-base-content">
+                <label for="my-drawer-search" class="flex flex-row-reverse">
+                  <div class="close rounded-full flex items-center justify-center" @click="showListIcon=true;">
+                    <i class="iconfont icon-close"></i>
+                  </div>
+                </label>
+                搜索
+              </div>
+            </div>
+          </div>
         </div>
         <div class="m right-icon flex items-center justify-center">
-          <div class="drawer rounded-full">
-            <input id="my-drawer" type="checkbox" class="drawer-toggle" />
-            <div class="drawer-content flex">
+          <div class="drawer rounded-full" v-if="showListIcon">
+            <input id="my-drawer-nav" type="checkbox" class="drawer-toggle" />
+            <div class="drawer-content rounded-full flex">
               <!-- Page content here -->
-              <label for="my-drawer" class="drawer-button m-auto">
+              <label for="my-drawer-nav" class="drawer-button m-auto">
                 <i class="iconfont icon-list"></i>
               </label>
             </div> 
             <div class="drawer-side bg-white z-50">
-              <label for="my-drawer" class="drawer-overlay"></label>
-              <div class="menu p-4 w-80 h-full bg-base-200 text-base-content">
-                <div class="collapse bg-base-200" v-for="item in navList" @click="jumpUrl(item)">
+              <label for="my-drawer-nav" class="drawer-overlay"></label>
+              <div class="menu p-4 w-96 h-full bg-white text-base-content">
+                <label for="my-drawer-nav" class="flex flex-row-reverse mr-4">
+                  <div class="close rounded-full flex items-center justify-center">
+                    <i class="iconfont icon-close"></i>
+                  </div>
+                </label>
+                <div class="collapse bg-white" v-for="item in navList" @click="jumpUrl(item)">
                   <input type="checkbox" /> 
                   <div class="collapse-title text-lg font-normal flex flex-row items-center">
                     {{ item.name }}
@@ -115,6 +139,8 @@ const jumpUrl = item => {
     window.location.href = item.url
   }
 }
+
+const showListIcon = ref(true)
 
 </script>
 
@@ -203,7 +229,19 @@ const jumpUrl = item => {
       .hover-img {
         display: none;
       }
-      &:hover {
+      .close {
+        height: 34px;
+        width: 34px;
+        background: #f3f4f6;
+        cursor: pointer;
+        &:hover {
+          background: #636874;
+          i {
+            color: white;
+          }
+        }
+      }
+      .drawer-content:hover {
         background: #636874;
         i {
           color: black;
@@ -237,5 +275,8 @@ const jumpUrl = item => {
   @media (max-width: 750px) {
     padding: 16px;
   }
+}
+.drawer-toggle:checked ~ .drawer-button {
+  display: none;
 }
 </style>

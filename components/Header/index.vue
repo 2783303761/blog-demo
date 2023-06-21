@@ -116,6 +116,7 @@ const listenScroll = () => {
         padding: 8px 24px;
         border-radius: 100px;
         position: relative;
+        flex-shrink: 0;
         img {
           height: 12px;
           width: 12px;

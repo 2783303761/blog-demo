@@ -3,10 +3,9 @@
     <div class="content flex flex-row">
       <a href="/" class="logo"></a>
       <div class="nav flex flex-row ml-8 flex-1">
-        <a 
+        <div
           :class="['nav-item flex flex-row items-center',index === 0 ? 'active' : '']" 
-          :href="item.url" 
-          target="_blank" 
+          @click="jumpUrl(item)"
           v-for="(item,index) in navList"
         >
           {{ item.name }}
@@ -19,14 +18,37 @@
               target="_blank"
             >{{ subItem.name }}</a>
           </div>
-        </a>
+        </div>
       </div>
       <div class="flex flex-row flex-row-reverse flex-1">
         <div class="right-icon flex items-center justify-center">
           <i class="iconfont icon-search"></i>
         </div>
         <div class="m right-icon flex items-center justify-center">
-          <i class="iconfont icon-list"></i>
+          <div class="drawer rounded-full">
+            <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+            <div class="drawer-content flex">
+              <!-- Page content here -->
+              <label for="my-drawer" class="drawer-button m-auto">
+                <i class="iconfont icon-list"></i>
+              </label>
+            </div> 
+            <div class="drawer-side bg-white z-50">
+              <label for="my-drawer" class="drawer-overlay"></label>
+              <div class="menu p-4 w-80 h-full bg-base-200 text-base-content">
+                <div class="collapse bg-base-200" v-for="item in navList" @click="jumpUrl(item)">
+                  <input type="checkbox" /> 
+                  <div class="collapse-title text-lg font-normal flex flex-row items-center">
+                    {{ item.name }}
+                    <img class="ml-1" v-if="item.child.length" src="asset/images/down.svg" />
+                  </div>
+                  <div class="collapse-content" v-if="item.child.length"> 
+                    <a class="text-base indent-4 leading-8" :href="childItem.url" v-for="childItem in item.child">{{ childItem.name }}</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -88,6 +110,12 @@ const listenScroll = () => {
   },20))
 }
 
+const jumpUrl = item => {
+  if(!item.child.length) {
+    window.location.href = item.url
+  }
+}
+
 </script>
 
 <style lang="less" scoped>
@@ -117,6 +145,7 @@ const listenScroll = () => {
         border-radius: 100px;
         position: relative;
         flex-shrink: 0;
+        cursor: pointer;
         img {
           height: 12px;
           width: 12px;
@@ -177,7 +206,7 @@ const listenScroll = () => {
       &:hover {
         background: #636874;
         i {
-          color: white;
+          color: black;
         }
       }
     }
@@ -190,6 +219,18 @@ const listenScroll = () => {
       }
       .m {
         display: flex;
+      }
+      .right-icon {
+        img {
+          height: 12px;
+          width: 12px;
+        }
+        &:hover {
+          background: #f3f4f6;
+          i {
+            color: black;
+          }
+        }
       }
     }
   }

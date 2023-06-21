@@ -38,7 +38,7 @@
                     <i class="iconfont icon-close"></i>
                   </div>
                 </label>
-                搜索
+                <Search></Search>
               </div>
             </div>
           </div>
@@ -82,6 +82,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { debounce } from '../../utils'
+import Search from './search.vue'
 
 const navList = ref([
   {

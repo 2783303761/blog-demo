@@ -13,7 +13,4 @@ import ArticleModule from './components/ArticleModule.vue';
 a {
   display: block;
 }
-body {
-  background: #f4f5f7;
-}
 </style>

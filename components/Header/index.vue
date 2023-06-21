@@ -4,12 +4,12 @@
       <a href="/" class="logo"></a>
       <div class="nav flex flex-row ml-8 flex-1">
         <div
-          :class="['nav-item flex flex-row items-center',index === 0 ? 'active' : '']" 
+          :class="['nav-item flex flex-row items-center',index == 0 ? 'active' : '']" 
           @click="jumpUrl(item)"
           v-for="(item,index) in navList"
         >
           {{ item.name }}
-          <img class="ml-1" v-if="item.child.length" src="asset/images/down.svg" />
+          <img class="ml-1" v-if="item.child.length" src="../../asset/images/down.svg" />
           <div class="sub-menu" v-if="item.child.length">
             <a 
               class="sub-menu-item text-sm" 
@@ -22,7 +22,7 @@
       </div>
       <div class="flex flex-row flex-row-reverse flex-1">
         <div class="right-icon flex items-center justify-center">
-          <div class="drawer drawer-end rounded-full">
+          <div class="drawer drawer-end rounded-full h-full">
             <input id="my-drawer-search" type="checkbox" class="drawer-toggle" />
             <div class="drawer-content rounded-full flex">
               <!-- Page content here -->
@@ -32,7 +32,7 @@
             </div> 
             <div class="drawer-side z-50">
               <label for="my-drawer-search" class="drawer-overlay"></label>
-              <div class="menu p-4 w-96 h-full bg-white text-base-content">
+              <div class="menu p-4 w-96 h-full bg-white text-base-content" style="max-width: 100%;">
                 <label for="my-drawer-search" class="flex flex-row-reverse">
                   <div class="close rounded-full flex items-center justify-center" @click="showListIcon=true;">
                     <i class="iconfont icon-close"></i>
@@ -80,7 +80,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { debounce } from '../../utils'
 import Search from './search.vue'
 
@@ -92,22 +92,22 @@ const navList = ref([
   },
   {
     name: '玩物志趣',
-    url: '/',
-    child: []
-  },
-  {
-    name: '精选栏目',
-    url: '/',
+    url: '/column/22',
     child: [
       {
         name: '前沿科技',
-        url: '/'
+        url: '/column/22'
       },
       {
         name: '车与出行',
         url: '/'
       }
     ]
+  },
+  {
+    name: '精选栏目',
+    url: '/',
+    child: []
   },
   {
     name: '示例页面',
@@ -121,8 +121,11 @@ const navList = ref([
   },
 ])
 
+const curPath = ref('')
+
 onMounted(() => {
   listenScroll()
+  curPath.value = window.location.pathname 
 })
 
 const listenScroll = () => {

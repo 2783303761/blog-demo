@@ -32,13 +32,13 @@
             </div> 
             <div class="drawer-side z-50">
               <label for="my-drawer-search" class="drawer-overlay"></label>
-              <div class="menu p-4 w-96 h-full bg-white text-base-content" style="max-width: 100%;">
+              <div class="menu p-4 w-96 h-full bg-white text-base-content search-m">
                 <label for="my-drawer-search" class="flex flex-row-reverse">
                   <div class="close rounded-full flex items-center justify-center" @click="showListIcon=true;">
                     <i class="iconfont icon-close"></i>
                   </div>
                 </label>
-                <Search></Search>
+                <Search class="flex-1"></Search>
               </div>
             </div>
           </div>
@@ -278,6 +278,11 @@ const showListIcon = ref(true)
   }
   @media (max-width: 750px) {
     padding: 16px;
+    .search-m {
+      width: 100%;
+      min-height: 100%;
+      height: max-content;
+    }
   }
 }
 .drawer-toggle:checked ~ .drawer-button {

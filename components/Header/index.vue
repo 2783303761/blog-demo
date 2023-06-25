@@ -135,7 +135,7 @@ const listenScroll = () => {
     } else {
       document.querySelector('.site-header').style.position = 'static'
     }
-  },20))
+  },10))
 }
 
 const jumpUrl = item => {

@@ -1,9 +1,16 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+import path from 'path';
 export default defineNuxtConfig({
   devtools: { enabled: true },
   postcss: {
     plugins: {
       tailwindcss: {},
+    },
+  },
+  vite: {
+    resolve: {
+      alias: {
+        '~': path.resolve(__dirname),
+      },
     },
   },
 })

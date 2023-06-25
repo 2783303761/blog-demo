@@ -13,6 +13,7 @@ import Footer from '../components/Footer'
 <style lang="less" scoped>
 .main-container {
   max-width: 1040px;
+  min-height: calc(100vh - 340px);
   margin: 0 auto;
   padding: 0 50px 50px 50px;
   @media (max-width: 750px) {

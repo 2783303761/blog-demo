@@ -1,17 +1,19 @@
 <template>
   <div class="common-card flex">
-    <div class="left-content" v-if="item.coverImg">
-      <img :src="item.coverImg" />
+    <div class="left-content" v-if="item.image">
+      <img :src="item.image" />
     </div>
     <div class="right-content flex-1 flex flex-col justify-between">
       <div class="grid">
         <div class="article-title text-lg font-bold line">{{ item.title }}</div>
-        <div class="article-desc text-sm mt-4 line-2">{{ item.desc }}</div>
+        <div class="article-desc text-sm mt-4 line-2">{{ item.description }}</div>
       </div>
       <div class="card-footer flex text-xs mt-3">
-        <a>{{ item.columnName }}</a>
-        <i class="text-primary mx-2">·</i>
-        <span>{{ item.createTime }}</span>
+        <template v-if="item.metas.length">
+          <a>{{ item.metas[0].title }}</a>
+          <i class="text-primary mx-2">·</i>
+        </template>
+        <span>{{ item.createdAt }}</span>
       </div>
     </div>
   </div>

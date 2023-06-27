@@ -4,10 +4,10 @@
       <div 
         :id="`item${index}`" 
         class="carousel-item w-full" 
-        :style="{backgroundImage: `url(${item.img})`}"
+        :style="{backgroundImage: `url(${item.content})`}"
         v-for="(item,index) in bannerList"
       >
-        <div class="carousel-text text-center">{{ item.text }}</div>
+        <div class="carousel-text text-center">{{ item.title }}</div>
       </div> 
     </div> 
     <!-- <div class="flex justify-center w-full py-2 gap-2">
@@ -18,18 +18,14 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { defineProps } from 'vue'
 
-const bannerList = ref([
-    {
-      img: 'https://theme.nicetheme.xyz/livingcoral/wp-content/uploads/sites/4/2021/09/2021091901225428-scaled.jpg',
-      text: 'Windows 10X延期发布，微软这次做系统能学乖吗？'
-    },
-    {
-      img: 'https://theme.nicetheme.xyz/livingcoral/wp-content/uploads/sites/4/2021/09/2021091901224385-scaled.jpg',
-      text: 'LP直言：规模10亿以下的GP就不要来找我们了'
-    }
-])
+const props = defineProps({
+  bannerList:{
+    type: Array,
+    default: []
+  }
+})
 
 </script>
 

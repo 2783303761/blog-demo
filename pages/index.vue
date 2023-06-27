@@ -1,5 +1,5 @@
 <template>
-  <TopBanner></TopBanner>
+  <TopBanner :bannerList="data.bannerInfo.contents"></TopBanner>
   <ArticleModule :baseInfo="data.contentInfo" :pageNum="route.query.pageNum || 1" :pagesize="8"></ArticleModule>
 </template>
 <script setup>
@@ -15,8 +15,12 @@ const { data } = useAsyncData(async () => {
     limit: '8',
     type: 'post'
   });
+  const bannerInfo = await getContentList({
+    type: 'carousel'
+  })
   return {
-    contentInfo
+    contentInfo,
+    bannerInfo
   };
 });
 

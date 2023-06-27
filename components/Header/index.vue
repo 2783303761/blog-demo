@@ -4,7 +4,7 @@
       <a href="/" class="logo"></a>
       <div class="nav flex flex-row ml-8 flex-1">
         <div
-          :class="['nav-item flex flex-row items-center',index == 0 ? 'active' : '']" 
+          :class="['nav-item flex flex-row items-center', (curPath == '/' && index == 0) || (curPath.includes(item.url) && index != 0) ? 'active' : '']" 
           @click="jumpUrl(item)"
           v-for="(item,index) in navList"
         >
@@ -80,7 +80,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue'
+import { ref, computed } from 'vue'
 import { debounce } from '../../utils'
 import Search from './search.vue'
 
@@ -92,7 +92,7 @@ const navList = ref([
   },
   {
     name: '玩物志趣',
-    url: '/column/22',
+    url: '/column/',
     child: [
       {
         name: '前沿科技',
@@ -106,22 +106,18 @@ const navList = ref([
   },
   {
     name: '精选栏目',
-    url: '/',
+    url: '/columnList',
     child: []
   },
   {
     name: '示例页面',
-    url: '/',
-    child: []
-  },
-  {
-    name: '购买主题',
-    url: '/',
+    url: '/p/22',
     child: []
   },
 ])
 
 const curPath = ref('')
+
 
 onMounted(() => {
   listenScroll()

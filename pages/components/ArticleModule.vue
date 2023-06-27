@@ -20,7 +20,10 @@ import CommonCard from '~/components/ArticleCard/CommonCard.vue';
 // import TextCard from '~/components/ArticleCard/TextCard.vue';
 
 const props = defineProps({
-  baseInfo: Object,
+  baseInfo: {
+    type: Object,
+    default: {}
+  },
   pagesize: Number,
   pageNum: String
 })

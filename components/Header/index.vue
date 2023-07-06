@@ -64,7 +64,7 @@
                   <input type="checkbox" /> 
                   <div class="collapse-title text-lg font-normal flex flex-row items-center">
                     {{ item.name }}
-                    <img class="ml-1" v-if="item.child.length" src="asset/images/down.svg" />
+                    <img class="ml-1" v-if="item.child.length" src="../../asset/images/down.svg" />
                   </div>
                   <div class="collapse-content" v-if="item.child.length"> 
                     <a class="text-base indent-4 leading-8" :href="childItem.url" v-for="childItem in item.child">{{ childItem.name }}</a>

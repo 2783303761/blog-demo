@@ -1,5 +1,5 @@
 <template>
-  <div class="common-card flex">
+  <a class="common-card flex" :href="`/p/${item.charID}`" target="_blank">
     <div class="left-content" v-if="item.image">
       <img :src="item.image" />
     </div>
@@ -16,7 +16,7 @@
         <span>{{ item.createdAt }}</span>
       </div>
     </div>
-  </div>
+  </a>
 </template>
 
 <script setup>

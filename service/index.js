@@ -33,3 +33,14 @@ export const getMetaList = async ({ offset, limit, type, isTree = false }) => {
 
   return res?.data
 }
+
+// 获取搜索列表
+export const getSearchList = async ({ type, word }) => {
+  const params = {
+    type,
+    word
+  }
+  const res = await axios.get(`${process.env.NUXT_API_URL}/v1/contents/search`, { params })
+
+  return res?.data
+}

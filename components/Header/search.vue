@@ -5,7 +5,13 @@
         <div class="text">搜索</div>
         <!-- <div class="num">(0)</div> -->
       </div>
-      <input type="text" placeholder="请输入搜索关键词" class="input w-full search-input mt-4" />
+      <input 
+        type="text" 
+        placeholder="请输入搜索关键词" 
+        class="input w-full search-input mt-4"
+        v-model="searchWord"
+        @keyup.enter.native="goSearch(carouselWords)"
+      />
     </div>
     <div class="search-recommend mt-12">
       <div class="title-content flex flex-row text-base font-medium">
@@ -36,7 +42,8 @@
 
 <script setup>
 import { getContentList, getMetaList } from '~/service';
-
+import { ref } from 'vue'
+ 
 const { data } = useAsyncData(async () => {
   const contentInfo = await getContentList({
     offset: 0,
@@ -53,6 +60,12 @@ const { data } = useAsyncData(async () => {
     tagInfo
   };
 });
+
+const searchWord = ref('')
+
+const goSearch = () => {
+  window.location.href = `/search?searchWord=${searchWord.value}`
+}
 
 </script>
 

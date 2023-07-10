@@ -9,7 +9,7 @@
         <div class="article-desc text-sm mt-4 line-2">{{ item.description }}</div>
       </div>
       <div class="card-footer flex text-xs mt-3">
-        <template v-if="item.metas.length">
+        <template v-if="item.metas && item.metas.length">
           <a>{{ item.metas[0].title }}</a>
           <i class="text-primary mx-2">·</i>
         </template>

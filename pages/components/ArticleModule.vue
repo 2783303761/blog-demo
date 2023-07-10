@@ -34,7 +34,7 @@ const pageCount = computed(() => {
 })
 
 const jumpUrl = index => {
-  window.location.href = `${window.location.origin}${window.location.pathname}?pageNum=${index+1}${useRoute().query.searchWord ? '&searchWord=' : ''}${useRoute().query.searchWord}`
+  window.location.href = `${window.location.origin}${window.location.pathname}?pageNum=${index+1}`
 }
 
 </script>

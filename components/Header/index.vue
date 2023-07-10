@@ -111,7 +111,7 @@ const navList = ref([
   },
   {
     name: '示例页面',
-    url: '/p/22',
+    url: '/p/23nvcm',
     child: []
   },
 ])

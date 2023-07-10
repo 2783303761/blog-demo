@@ -19,7 +19,7 @@
       </div>
       <div class="recommend-list mt-4">
         <a 
-          :href="item.url" 
+          :href="`/p/${item.charID}`" 
           target="_blank"
           v-for="item in data.contentInfo.contents"
         >{{ item.title }}</a>

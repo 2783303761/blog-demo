@@ -12,7 +12,7 @@
         </template>
       <div class="create-time">{{ data.createdAt }}</div>
     </div>
-    <div class="content" v-html="data.content"></div>
+    <div class="content" v-html="data.htmlContent"></div>
   </div>
 </template>
 

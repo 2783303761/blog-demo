@@ -5,7 +5,11 @@
       <div class="crumb-item crumb-cur">{{ data.title }}</div>
     </div>
     <div class="title">{{ data.title }}</div>
-    <div class="article-info">
+    <div class="article-info flex flex-row items-center">
+      <template v-if="data.metas && data.metas.length">
+          <div class="create-time">{{ data.metas[0].title }}</div>
+          <i class="text-primary mx-2">·</i>
+        </template>
       <div class="create-time">{{ data.createdAt }}</div>
     </div>
     <div class="content" v-html="data.content"></div>
@@ -51,6 +55,9 @@ const { data } = useAsyncData(async () => {
     .create-time {
       color: #8c98a3;
       font-size: 13px;
+    }
+    i {
+      line-height: 1px;
     }
   }
   .content {

@@ -3,7 +3,7 @@
     <div class="search-box">
       <div class="title-content flex flex-row text-base font-medium">
         <div class="text">搜索</div>
-        <div class="num">(0)</div>
+        <!-- <div class="num">(0)</div> -->
       </div>
       <input type="text" placeholder="请输入搜索关键词" class="input w-full search-input mt-4" />
     </div>
@@ -15,8 +15,8 @@
         <a 
           :href="item.url" 
           target="_blank"
-          v-for="item in recommendList"
-        >{{ item.name }}</a>
+          v-for="item in data.contentInfo.contents"
+        >{{ item.title }}</a>
       </div>
     </div>
     <div class="search-tag mt-12">
@@ -27,84 +27,32 @@
         <a 
           :href="item.url" 
           target="_blank"
-          v-for="item in tagList"
-        ># {{ item.name }}</a>
+          v-for="item in data.tagInfo.list"
+        ># {{ item.title }}</a>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
+import { getContentList, getMetaList } from '~/service';
 
-const recommendList = ref([
-  {
-    name: 'Windows 10X延期发布，微软这次做系统能学乖吗？',
-    url: '/'
-  },
-  {
-    name: '高端的LiFi可见光通信技术，古人早就用上了？',
-    url: '/'
-  },
-  {
-    name: '今天的我们怎么成了一种纯粹的“观看动物”？',
-    url: '/'
-  },
-  {
-    name: 'LP直言：规模10亿以下的GP就不要来找我们了',
-    url: '/'
-  },
-  {
-    name: '618超越雀巢、星巴克，这个国产咖啡品牌做对了什么？',
-    url: '/'
-  },
-])
-
-const tagList = ref([
-  {
-    name: 'Facebook',
-    url: '/'
-  },
-  {
-    name: 'Netscape',
-    url: '/'
-  },
-  {
-    name: '兰博基尼',
-    url: '/'
-  },
-  {
-    name: '大跨越',
-    url: '/'
-  },
-  {
-    name: '工业制造的皇冠',
-    url: '/'
-  },
-  {
-    name: '气氛',
-    url: '/'
-  },
-  {
-    name: '新手云集',
-    url: '/'
-  },
-  {
-    name: '本土汽车品牌',
-    url: '/'
-  },
-  {
-    name: '激光雷达',
-    url: '/'
-  },
-  {
-    name: '烧钱',
-    url: '/'
-  },
-  {
-    name: '特斯拉',
-    url: '/'
-  },
-])
+const { data } = useAsyncData(async () => {
+  const contentInfo = await getContentList({
+    offset: 0,
+    limit: 5,
+    type: 'post'
+  });
+  const tagInfo = await getMetaList({
+    offset: 0,
+    limit: 10,
+    type: 'tag'
+  })
+  return {
+    contentInfo,
+    tagInfo
+  };
+});
 
 </script>
 

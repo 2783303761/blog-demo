@@ -21,3 +21,15 @@ export const getContentDetail = async ({ type, charID }) => {
 
   return res?.data
 }
+
+// 获取项目列表
+export const getMetaList = async ({ offset, limit, type, isTree = false }) => {
+  const params = {
+    offset,
+    limit,
+    type,
+  }
+  const res = await axios.get(`${process.env.NUXT_API_URL}/v1/metas`, { params })
+
+  return res?.data
+}

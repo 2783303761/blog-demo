@@ -6,9 +6,9 @@
     </div>
     <div class="comment-form">
       <input type="text" placeholder="昵称" class="input w-full" />
-      <input type="text" placeholder="昵称" class="input" style="width:49%;margin-right:2%;" />
-      <input type="text" placeholder="昵称" class="input" style="width:49%;"/>
-      <textarea placeholder="昵称" class="textarea w-full" />
+      <input type="text" placeholder="邮箱" class="input" style="width:49%;margin-right:2%;" />
+      <input type="text" placeholder="网址" class="input" style="width:49%;"/>
+      <textarea placeholder="说点什么" class="textarea w-full" />
       <div class="btn-content">
         <div class="btn">发表评论</div>
       </div>
